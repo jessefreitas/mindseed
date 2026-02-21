@@ -1,6 +1,8 @@
 import Topbar from "@/Components/MindSeed/Topbar";
 import AdminLayout from "../layout";
 import { useEffect, useState } from "react";
+import { usePage } from "@inertiajs/react";
+import { PageProps } from "@/types";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -26,6 +28,7 @@ ChartJS.register(
 );
 
 export default function IndividualProfile() {
+    const user = usePage<PageProps>().props.auth.user;
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -139,6 +142,17 @@ export default function IndividualProfile() {
                     {/* AREA PRINCIPAL DE DADOS */}
                     <div className="lg:col-span-3 flex flex-col gap-6">
 
+                        {/* RBAC Warning for Non-Medical Staff */}
+                        {user.subrole !== 'medico' && (
+                            <div className="bg-[var(--warning)]/10 border border-[var(--warning)] text-[var(--warning)] px-4 py-3 rounded-xl flex items-start gap-3 text-sm">
+                                <i className="fa-solid fa-lock mt-1"></i>
+                                <div>
+                                    <strong className="block mb-1">Acesso Restrito - Sigilo Clínico (LGPD)</strong>
+                                    Algumas métricas psicoanalíticas brutas estão ocultas para o seu perfil de <b>{user.subrole === 'gestao' ? 'Gestão' : 'Comissão Técnica'}</b>. Apenas profissionais de Saúde (Médico/Psicólogo) possuem acesso aos laudos integrais.
+                                </div>
+                            </div>
+                        )}
+
                         {/* GRAFICO EVOLUTIVO */}
                         <div className="card-glass border border-[#D4AF37]/30 p-6 rounded-2xl">
                             <div className="flex justify-between items-center mb-6">
@@ -154,17 +168,33 @@ export default function IndividualProfile() {
 
                         {/* METRICS DOUGHNUT CARDS */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            {metrics.map((m, idx) => (
-                                <div key={idx} className="card-glass border border-[#D4AF37]/30 p-5 rounded-2xl flex flex-col items-center justify-center gap-3 text-center">
-                                    <div className="relative w-24 h-24">
-                                        <Doughnut data={createDoughnutData(m.value, m.color)} options={doughnutOptions as any} />
-                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                            <span className="text-xl font-bold font-sans" style={{ color: m.color }}>{m.value}%</span>
+                            {metrics.map((m, idx) => {
+                                // RBAC: Hide sensitive metrics if not a doctor
+                                const isSensitive = m.label === "Impulsividade Crônica";
+                                const isHidden = isSensitive && user.subrole !== 'medico';
+
+                                return (
+                                    <div key={idx} className={`card-glass border border-[#D4AF37]/30 p-5 rounded-2xl flex flex-col items-center justify-center gap-3 text-center ${isHidden ? 'opacity-40 grayscale' : ''}`}>
+                                        <div className="relative w-24 h-24">
+                                            {isHidden ? (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <i className="fa-solid fa-user-lock text-3xl text-[var(--text-muted)]"></i>
+                                                </div>
+                                            ) : (
+                                                <>
+                                                    <Doughnut data={createDoughnutData(m.value, m.color)} options={doughnutOptions as any} />
+                                                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                                        <span className="text-xl font-bold font-sans" style={{ color: m.color }}>{m.value}%</span>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
+                                        <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide leading-tight mt-2">
+                                            {m.label} {isHidden && <i className="fa-solid fa-lock text-[10px] ml-1"></i>}
+                                        </span>
                                     </div>
-                                    <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide leading-tight mt-2">{m.label}</span>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
 
                         {/* RECOMENDAÇÕES */}

@@ -20,12 +20,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Create Admin User
+        // 1. Create Admin User (Gestor Geral / Médico)
         User::create([
-            'name' => 'Diretoria',
+            'name' => 'Dr. Costa (Diretoria Médica)',
             'email' => 'admin@mindseed.com',
             'password' => Hash::make('password'),
             'role' => 'admin',
+            'subrole' => 'medico', // Full RBAC Access
+        ]);
+
+        // 1.5 Create Secondary Admin (Comissão Técnica - Restricted)
+        User::create([
+            'name' => 'Treinador Silva',
+            'email' => 'tecnico@mindseed.com',
+            'password' => Hash::make('password'),
+            'role' => 'admin',
+            'subrole' => 'comissao', // Restricted RBAC Access
         ]);
 
         // 2. Create Athlete User & Athlete Profile
