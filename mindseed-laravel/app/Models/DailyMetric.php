@@ -13,6 +13,11 @@ class DailyMetric extends Model
         'focus_level',
         'stress_level',
         'sleep_quality',
+        'impulsivity_score',
+        'maturity_score',
+        'pressure_score',
+        'burnout_risk',
+        'grief_indicator',
     ];
 
     public function athlete()

@@ -64,10 +64,15 @@ class DatabaseSeeder extends Seeder
         DailyMetric::create([
             'athlete_id' => $athlete->id,
             'date' => now()->toDateString(),
-            'energy_level' => 78,
-            'focus_level' => 65,
-            'stress_level' => 82, // High stress
-            'sleep_quality' => 45, // Poor sleep
+            'energy_level' => 30, // Low energy (Burnout indication)
+            'focus_level' => 45,
+            'stress_level' => 85, // High stress
+            'sleep_quality' => 40, // Poor sleep
+            'impulsivity_score' => 60,
+            'maturity_score' => 40,
+            'pressure_score' => 30, // Bad under pressure
+            'burnout_risk' => true,
+            'grief_indicator' => false,
         ]);
         
         // 5. Create Alerts for the Athlete

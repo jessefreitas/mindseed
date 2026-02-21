@@ -13,6 +13,9 @@ class Assessment extends Model
         'q_stress',
         'q_energy',
         'q_focus',
+        'q_impulsivity',
+        'q_pressure',
+        'q_mood',
         'notes',
     ];
 
