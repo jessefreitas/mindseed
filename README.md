@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MindSeed - Plataforma de Inteligência Preditiva Esportiva
 
-## Getting Started
+Bem-vindo ao repositório oficial da **MindSeed**. Esta aplicação é construída com **Next.js 14**, **Tailwind CSS** e **Chart.js** para oferecer painéis analíticos de alta performance para o esporte.
 
-First, run the development server:
+## Visão Geral da MVP (Fase 2)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A aplicação conta com um poderoso **Design System Baseado em Variáveis CSS**, permitindo mudança fluída e instantânea entre o Tema Claro (Apple Health / Clínico) e o Tema Escuro (Tech / Navy Deep). Ambas as paletas foram curadas para transmitir autoridade científica e tecnologia imersiva.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Telas Disponíveis:
+*   **Landing Page**: `mindseed.omniforge.com.br/`
+*   **Login**: `mindseed.omniforge.com.br/login`
+*   **Dashboard Gestor (Admin)**: `mindseed.omniforge.com.br/admin`
+    *   Dashboard Executivo (MindSet Geral do Elenco)
+    *   Perfil Individual (Raio-X de Atleta)
+    *   Comparativo Estratégico (Radar de Titularidade)
+    *   Central Semafórica de Alertas de Risco (Burnout/Luto)
+*   **Portal do Atleta**: `mindseed.omniforge.com.br/atleta`
+*   **Portal Família (Base)**: `mindseed.omniforge.com.br/familia`
+*   **Termos LGPD**: `mindseed.omniforge.com.br/termos`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy Automatizado
+Este repositório possui Integração Contínua (CI/CD) com a VPS. 
+Qualquer `git push origin main` feito acionará o Webhook (Node.js na porta 9000), efetuando download automático do código, `npm build` e reinício da máquina via PM2.
