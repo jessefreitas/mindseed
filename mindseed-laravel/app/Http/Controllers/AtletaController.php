@@ -23,4 +23,22 @@ class AtletaController extends Controller
             'athlete' => $athlete
         ]);
     }
+
+    public function testes()
+    {
+        return Inertia::render('Atleta/Testes');
+    }
+
+    public function conteudo()
+    {
+        return Inertia::render('Atleta/Conteudo');
+    }
+
+    public function perfil()
+    {
+        $athlete = Athlete::with('metrics')->where('user_id', Auth::id() ?? 0)->first();
+        return Inertia::render('Atleta/Perfil', [
+            'athlete' => $athlete
+        ]);
+    }
 }

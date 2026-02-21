@@ -23,6 +23,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/atleta/assessment', [AssessmentController::class, 'create'])->name('atleta.assessment');
     Route::post('/atleta/assessment', [AssessmentController::class, 'store'])->name('atleta.assessment.store');
     
+    // Novas rotas da Fase 6 (Expansão do Atleta)
+    Route::get('/atleta/testes', [AtletaController::class, 'testes'])->name('atleta.testes');
+    Route::get('/atleta/conteudo', [AtletaController::class, 'conteudo'])->name('atleta.conteudo');
+    Route::get('/atleta/perfil', [AtletaController::class, 'perfil'])->name('atleta.perfil');
+    
     Route::get('/familia', [FamiliaController::class, 'dashboard'])->name('familia.dashboard');
 });
 
