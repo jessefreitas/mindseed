@@ -45,13 +45,22 @@ export default function Sidebar() {
             </nav>
 
             <div className="p-4 border-t border-[var(--border-color)]">
-                <div className="flex items-center gap-3">
-                    <img src="https://ui-avatars.com/api/?name=Diretor&background=0EA5E9&color=fff" alt="User" className="w-10 h-10 rounded-full border border-[var(--border-color)]" />
+                <div className="flex items-center gap-3 mb-4">
+                    <img src="https://ui-avatars.com/api/?name=Diretor&background=D4AF37&color=000" alt="User" className="w-10 h-10 rounded-full border border-[var(--border-color)]" />
                     <div className="flex flex-col">
                         <span className="text-sm font-bold">Diretoria</span>
                         <span className="text-xs text-[var(--text-muted)]">Clube Master</span>
                     </div>
                 </div>
+                <Link
+                    href="/logout"
+                    method="post"
+                    as="button"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-bold border border-[var(--danger)] text-[var(--danger)] hover:bg-[var(--danger)] hover:text-white transition-colors"
+                >
+                    <i className="fa-solid fa-right-from-bracket"></i>
+                    Sair do Sistema
+                </Link>
             </div>
         </aside>
     );

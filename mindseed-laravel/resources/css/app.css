@@ -3,24 +3,17 @@
 @tailwind utilities;
 
 :root {
-  /* LIGHT VIVID THEME */
-  --bg-main: #FFFFFF;
-  --bg-card: #F8FAFC;
-  /* Slate 50 */
-  --text-main: #0F172A;
-  /* Slate 900 */
-  --text-muted: #64748B;
-  /* Slate 500 */
-  --border-color: #E2E8F0;
-  /* Slate 200 */
+  /* LIGHT VIVID THEME overridden to GOLD EXECUTIVE */
+  --bg-main: #000000;
+  --bg-card: #0A0A0A;
+  --text-main: #F5F3EE;
+  --text-muted: #A3A3A3;
+  --border-color: #222222;
 
-  /* Accent & Semantic - Enterprise Light */
-  --accent-primary: #1D4ED8;
-  /* Blue 700 - Corporate */
-  --accent-secondary: #0F172A;
-  /* Slate 900 */
-  --accent-tertiary: #0369A1;
-  /* Sky 700 */
+  /* Accent & Semantic - Gold */
+  --accent-primary: #D4AF37;
+  --accent-secondary: #BCA339;
+  --accent-tertiary: #A67C00;
 
   --danger: #EF4444;
   --warning: #F59E0B;
@@ -29,29 +22,21 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* DARK VIVID THEME */
-    --bg-main: #020617;
-    /* Slate 950 */
-    --bg-card: #0F172A;
-    /* Slate 900 */
-    --text-main: #F8FAFC;
-    /* Slate 50 */
-    --text-muted: #94A3B8;
-    /* Slate 400 */
-    --border-color: #1E293B;
-    /* Slate 800 */
+    /* DARK VIVID THEME - GOLD EXECUTIVE */
+    --bg-main: #000000;
+    --bg-card: #0A0A0A;
+    --text-main: #F5F3EE;
+    --text-muted: #A3A3A3;
+    --border-color: #222222;
 
-    /* Accent & Semantic - Enterprise Dark */
-    --accent-primary: #2563EB;
-    /* Blue 600 */
-    --accent-secondary: #3B82F6;
-    /* Blue 500 */
-    --accent-tertiary: #0EA5E9;
-    /* Sky 500 */
+    /* Accent & Semantic - Gold */
+    --accent-primary: #D4AF37;
+    --accent-secondary: #BCA339;
+    --accent-tertiary: #A67C00;
 
-    --danger: #F87171;
-    --warning: #FBBF24;
-    --success: #34D399;
+    --danger: #EF4444;
+    --warning: #F59E0B;
+    --success: #10B981;
   }
 }
 

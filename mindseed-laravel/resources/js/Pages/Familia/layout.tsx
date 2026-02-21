@@ -15,9 +15,9 @@ export default function FamilyLayout({ children, title }: { children: React.Reac
                     </div>
                 </div>
                 <div className="flex items-center gap-4">
-                    <button className="relative p-2 text-[var(--bg-main)] bg-[var(--text-main)] rounded-full hover:opacity-90 transition-opacity text-xs font-bold px-4">
+                    <Link href="/logout" method="post" as="button" className="relative p-2 text-[var(--bg-main)] bg-[var(--danger)] rounded-full hover:bg-red-600 transition-colors text-xs font-bold px-4">
                         Sair
-                    </button>
+                    </Link>
                 </div>
             </header>
 
