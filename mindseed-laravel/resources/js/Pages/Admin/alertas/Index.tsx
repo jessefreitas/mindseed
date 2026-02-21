@@ -69,7 +69,7 @@ export default function Alerts() {
                 <div className="flex gap-3 mb-6">
                     <button
                         onClick={() => setFilter("all")}
-                        className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors border ${filter === "all" ? "bg-[var(--accent-primary)] border-[var(--accent-primary)] text-white" : "border-[var(--border-color)] text-[var(--text-main)] hover:bg-[var(--bg-card)]"}`}
+                        className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors border ${filter === "all" ? "bg-[#D4AF37] border-[#D4AF37] text-white" : "border-[#D4AF37]/30 text-[var(--text-main)] hover:bg-[var(--bg-card)]"}`}
                     >
                         Todos
                     </button>
@@ -102,9 +102,9 @@ export default function Alerts() {
                     {filteredAlerts.map((alert) => (
                         <div
                             key={alert.id}
-                            className={`flex flex-col md:flex-row items-center justify-between p-4 rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] hover:-translate-y-1 transition-transform shadow-sm ${alert.status === 'critical' ? 'border-l-4 border-l-[var(--danger)] bg-[var(--danger)]/5' :
-                                alert.status === 'warning' ? 'border-l-4 border-l-[var(--warning)]' :
-                                    'border-l-4 border-l-[var(--success)]'
+                            className={`flex flex-col md:flex-row items-center justify-between p-4 rounded-xl border border-[#D4AF37]/30 bg-[var(--bg-main)] hover:-translate-y-1 transition-transform shadow-sm ${alert.status === 'critical' ? 'border-l-4 border-l-[var(--danger)] bg-[var(--danger)]/5' :
+                                alert.status === 'warning' ? 'border-l-4 border-l-[var(--warning)] bg-[var(--warning)]/5' :
+                                    'border-l-4 border-l-[var(--success)] bg-[var(--success)]/5'
                                 }`}
                         >
 
@@ -138,11 +138,11 @@ export default function Alerts() {
                             <div className="w-full md:w-32 text-right">
                                 {alert.status === 'critical' ? (
                                     <button onClick={() => setModalOpen(true)} className="w-full md:w-auto px-4 py-2 border border-[var(--danger)] text-[var(--danger)] text-sm font-bold rounded-lg hover:bg-[var(--danger)] hover:text-white transition-colors">
-                                        {alert.action}
+                                        <i className="fa-solid fa-eye mr-1"></i> {alert.action}
                                     </button>
                                 ) : (
-                                    <button className="w-full md:w-auto px-4 py-2 border border-[var(--border-color)] text-[var(--text-main)] text-sm font-bold rounded-lg hover:bg-[var(--bg-card)] transition-colors">
-                                        {alert.action}
+                                    <button className="w-full md:w-auto px-4 py-2 border border-[#D4AF37]/50 text-[#D4AF37] text-sm font-bold rounded-lg hover:bg-[#D4AF37]/10 transition-colors">
+                                        <i className="fa-solid fa-chart-line mr-1"></i> {alert.action}
                                     </button>
                                 )}
                             </div>
@@ -155,10 +155,10 @@ export default function Alerts() {
 
             {/* MODAL CRÍTICO */}
             {modalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000]/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-                    <div className="bg-[var(--bg-card)] border-t-8 border-t-[var(--danger)] border border-[var(--border-color)] shadow-2xl rounded-2xl w-full max-w-lg overflow-hidden flex flex-col transform animate-in slide-in-from-bottom-5">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000]/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+                    <div className="bg-[var(--bg-card)] border-t-8 border-t-[var(--danger)] border border-[#D4AF37]/30 shadow-[0_0_40px_rgba(2EF4444,0.15)] rounded-2xl w-full max-w-lg overflow-hidden flex flex-col transform animate-in slide-in-from-bottom-5">
 
-                        <div className="p-5 flex justify-between items-center border-b border-[var(--border-color)]">
+                        <div className="p-5 flex justify-between items-center border-b border-[#D4AF37]/20">
                             <h2 className="text-xl font-bold text-[var(--danger)] flex items-center gap-2">
                                 <i className="fa-solid fa-triangle-exclamation"></i> Sinalização de Crise: Lucas Moura
                             </h2>
@@ -168,8 +168,8 @@ export default function Alerts() {
                         </div>
 
                         <div className="p-6 flex flex-col gap-4">
-                            <div className="p-4 bg-[var(--bg-main)] border border-[var(--border-color)] rounded-xl">
-                                <h4 className="font-bold text-[var(--accent-primary)] mb-2">Diagnóstico do Sistema</h4>
+                            <div className="p-4 bg-[var(--bg-main)] border border-[#D4AF37]/30 rounded-xl">
+                                <h4 className="font-bold text-[#D4AF37] mb-2">Diagnóstico do Sistema</h4>
                                 <p className="text-sm text-[var(--text-muted)] leading-relaxed">
                                     Foi detectada uma queda de <strong className="text-[var(--text-main)]">28% na estabilidade volitiva</strong> do atleta nos últimos 15 dias. O padrão de respostas indica fadiga emocional severa e propensão a lesões na reta final do campeonato.
                                 </p>
@@ -183,11 +183,11 @@ export default function Alerts() {
                             </div>
                         </div>
 
-                        <div className="p-5 bg-[var(--bg-main)] border-t border-[var(--border-color)] flex justify-end gap-3">
+                        <div className="p-5 bg-[var(--bg-main)] border-t border-[#D4AF37]/20 flex justify-end gap-3">
                             <button onClick={() => setModalOpen(false)} className="px-5 py-2 font-bold text-sm text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors">
                                 Ignorar (Assumir Risco)
                             </button>
-                            <button className="px-5 py-2 bg-[var(--danger)] text-white font-bold text-sm rounded-lg hover:bg-red-600 transition-colors shadow-lg shadow-[var(--danger)]/30">
+                            <button className="px-5 py-2 bg-gradient-to-r from-[var(--danger)] to-[#991b1b] text-white font-bold text-sm rounded-lg hover:opacity-90 transition-opacity shadow-lg shadow-[var(--danger)]/30">
                                 Iniciar Intervenção MindSeed
                             </button>
                         </div>
