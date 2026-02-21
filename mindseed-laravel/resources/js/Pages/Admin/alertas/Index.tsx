@@ -14,7 +14,7 @@ export default function Alerts() {
             avatar: "https://ui-avatars.com/api/?name=Lucas+Moura&background=1E293B&color=fff",
             status: "critical",
             statusLabel: "Imediato",
-            reason: "Luto Agudo / Desfoco",
+            reason: "Impacto Emocional Severo",
             icon: "fa-cloud-bolt",
             metric: "- 28%",
             action: "Ver Detalhes"
@@ -26,7 +26,7 @@ export default function Alerts() {
             avatar: "https://ui-avatars.com/api/?name=Roberto+Dias&background=1E293B&color=fff",
             status: "critical",
             statusLabel: "Imediato",
-            reason: "Risco Elevado de Burnout",
+            reason: "Sinal de Esgotamento (Sobrecarga)",
             icon: "fa-fire",
             metric: "- 22%",
             action: "Ver Detalhes"
@@ -61,7 +61,7 @@ export default function Alerts() {
 
     return (
         <AdminLayout title="Central de Alertas Semafóricos">
-            <Topbar title="Central de Alertas Semafóricos" subtitle="Monitoramento ativo de quedas de performance, burnout e luto" />
+            <Topbar title="Central de Alertas Semafóricos" subtitle="Monitoramento ativo de quedas de performance, sobrecarga e impacto emocional" />
 
             <div className="p-6 overflow-auto">
 
@@ -169,9 +169,9 @@ export default function Alerts() {
 
                         <div className="p-6 flex flex-col gap-4">
                             <div className="p-4 bg-[var(--bg-main)] border border-[#D4AF37]/30 rounded-xl">
-                                <h4 className="font-bold text-[#D4AF37] mb-2">Diagnóstico do Sistema</h4>
+                                <h4 className="font-bold text-[#D4AF37] mb-2">Análise Preditiva do Sistema</h4>
                                 <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                                    Foi detectada uma queda de <strong className="text-[var(--text-main)]">28% na estabilidade volitiva</strong> do atleta nos últimos 15 dias. O padrão de respostas indica fadiga emocional severa e propensão a lesões na reta final do campeonato.
+                                    Foi detectada uma queda de <strong className="text-[var(--text-main)]">28% na estabilidade volitiva</strong> do atleta nos últimos 15 dias. O padrão de respostas indica fadiga emocional severa e propensão a lesões na reta final do campeonato. <br /><br /><span className="text-[10px] text-[var(--accent-primary)] opacity-80">*Isso não constitui diagnóstico clínico médico ou psiquiátrico. Apenas leitura preditiva para tomada de decisão esportiva.</span>
                                 </p>
                             </div>
 

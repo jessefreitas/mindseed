@@ -180,6 +180,9 @@ export default function IndividualProfile() {
                                     <p className="text-sm text-[var(--text-main)] font-semibold">
                                         Ação sugerida: Poupar do próximo jogo fora de casa e iniciar protocolo de descanso cognitivo (Nível 2).
                                     </p>
+                                    <p className="text-[10px] text-[var(--danger)]/80 mt-2 italic">
+                                        *Este apontamento não constitui diagnóstico clínico psiquiátrico. É um sinal preditivo para decisão esportiva.
+                                    </p>
                                 </div>
                                 <div className="md:w-64 border-l border-[#D4AF37]/30 pl-6 flex flex-col justify-center">
                                     <span className="text-xs font-bold text-[#D4AF37] uppercase mb-2 drop-shadow-sm">Janela de Negociação</span>

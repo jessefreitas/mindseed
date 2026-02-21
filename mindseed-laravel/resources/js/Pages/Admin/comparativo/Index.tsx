@@ -167,6 +167,9 @@ export default function Comparison() {
                                 <p className="text-sm text-[var(--text-main)] leading-relaxed">
                                     A arquitetura mental de <strong>Pedro Gomes</strong> apresenta resiliência 38% superior em cenários de eliminação (Mata-mata). <strong>João Silva</strong> possui leve vantagem reflexa, mas seu coeficiente de "Decisão sob Pressão" o torna uma opção de alto risco para titularidade absoluta nesta reta final.
                                 </p>
+                                <p className="text-[10px] text-[var(--text-muted)] italic mt-2">
+                                    *Isso não constitui diagnóstico clínico. É uma leitura preditiva focada em performance esportiva.
+                                </p>
                                 <div className="flex gap-4 mt-4">
                                     <button className="flex-1 py-2 bg-[var(--text-main)] text-[var(--bg-main)] font-bold rounded-lg text-sm hover:opacity-90 transition-opacity">
                                         Confirmar Titularidade (P)

@@ -140,7 +140,7 @@ export default function AdminDashboard({ stats }: { stats: any }) {
                         <div className="h-12 w-full mt-2">
                             <Line data={sparklineData('#EF4444')} options={sparklineOptions} />
                         </div>
-                        <p className="text-xs text-[var(--text-muted)] mt-2"><span className="text-[var(--danger)] font-bold">{stats?.burnoutRiskCount}</span> atletas em Burnout</p>
+                        <p className="text-xs text-[var(--text-muted)] mt-2"><span className="text-[var(--danger)] font-bold">{stats?.burnoutRiskCount}</span> atletas em Esgotamento</p>
                     </div>
 
                     {/* Card 4 */}
@@ -192,7 +192,7 @@ export default function AdminDashboard({ stats }: { stats: any }) {
                                 <img src="https://ui-avatars.com/api/?name=Lucas+Moura&background=1E293B&color=fff" alt="L" className="w-12 h-12 rounded-full" />
                                 <div className="flex-1">
                                     <h4 className="font-bold text-sm">Lucas Moura</h4>
-                                    <p className="text-xs text-[var(--text-muted)]">Risco de Luto / Queda de Vigor</p>
+                                    <p className="text-xs text-[var(--text-muted)]">Impacto Emocional / Queda de Vigor</p>
                                 </div>
                                 <span className="px-2 py-1 bg-[var(--danger)]/10 text-[var(--danger)] rounded text-xs font-bold border border-[var(--danger)]/20">-28%</span>
                             </div>
