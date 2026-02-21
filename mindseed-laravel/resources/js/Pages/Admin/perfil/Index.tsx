@@ -10,8 +10,9 @@ import {
     Title,
     Tooltip,
     Legend,
+    ArcElement,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import { Line, Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(
     CategoryScale,
@@ -21,6 +22,7 @@ ChartJS.register(
     Title,
     Tooltip,
     Legend,
+    ArcElement
 );
 
 export default function IndividualProfile() {
@@ -81,11 +83,26 @@ export default function IndividualProfile() {
         }
     };
 
+    const createDoughnutData = (value: number, color: string) => ({
+        labels: ['Preenchido', 'Restante'],
+        datasets: [{
+            data: [value, 100 - value],
+            backgroundColor: [color, 'rgba(255, 255, 255, 0.05)'],
+            borderWidth: 0,
+            cutout: '75%',
+        }]
+    });
+
+    const doughnutOptions = {
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+        maintainAspectRatio: false,
+    };
+
     const metrics = [
-        { label: "Estabilidade Emocional", value: 58, color: "var(--danger)" },
-        { label: "Impulsividade", value: 82, color: "var(--warning)" },
-        { label: "Maturidade de Decisão", value: 65, color: "var(--warning)" },
-        { label: "Controle Reflexo", value: 90, color: "var(--success)" },
+        { label: "Impulsividade Crônica", value: 82, color: "#EF4444" }, // Danger
+        { label: "Maturidade Positiva", value: 65, color: "#D4AF37" }, // Gold
+        { label: "Consistência sob Pressão", value: 58, color: "#F59E0B" }, // Warning
+        { label: "Controle Cognitivo", value: 90, color: "#10B981" }, // Success
     ];
 
     if (!mounted) return null;
@@ -99,9 +116,9 @@ export default function IndividualProfile() {
 
                     {/* SIDEBAR DO ATLETA */}
                     <div className="lg:col-span-1">
-                        <div className="card-glass p-6 rounded-2xl flex flex-col items-center text-center">
+                        <div className="card-glass border border-[#D4AF37]/30 p-6 rounded-2xl flex flex-col items-center text-center">
                             <div className="relative mb-4">
-                                <img src="https://ui-avatars.com/api/?name=Arthur+Gomes&background=0F172A&color=fff&size=150" alt="Arthur" className="w-32 h-32 rounded-full border-4 border-[var(--border-color)] shadow-lg" />
+                                <img src="https://ui-avatars.com/api/?name=Arthur+Gomes&background=0F172A&color=fff&size=150" alt="Arthur" className="w-32 h-32 rounded-full border-4 border-[#D4AF37]/50 shadow-lg" />
                                 <div className="absolute bottom-1 right-1 w-6 h-6 bg-[var(--danger)] rounded-full border-2 border-[var(--bg-card)] shadow-sm"></div>
                             </div>
                             <h2 className="text-xl font-bold mb-1">Arthur Gomes</h2>
@@ -123,9 +140,9 @@ export default function IndividualProfile() {
                     <div className="lg:col-span-3 flex flex-col gap-6">
 
                         {/* GRAFICO EVOLUTIVO */}
-                        <div className="card-glass p-6 rounded-2xl">
+                        <div className="card-glass border border-[#D4AF37]/30 p-6 rounded-2xl">
                             <div className="flex justify-between items-center mb-6">
-                                <h3 className="text-lg font-bold">Evolução de Estabilidade Emocional</h3>
+                                <h3 className="text-lg font-bold text-[#D4AF37]">Evolução de Estabilidade Emocional</h3>
                                 <span className="text-xs bg-[var(--danger)]/10 text-[var(--danger)] border border-[var(--danger)]/20 px-3 py-1 rounded-full font-bold">
                                     Queda de 21%
                                 </span>
@@ -135,37 +152,37 @@ export default function IndividualProfile() {
                             </div>
                         </div>
 
-                        {/* METRICS HORIZONTAL CARDS */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* METRICS DOUGHNUT CARDS */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {metrics.map((m, idx) => (
-                                <div key={idx} className="card-glass p-5 rounded-2xl flex flex-col gap-3">
-                                    <div className="flex justify-between items-center">
-                                        <span className="text-sm font-bold text-[var(--text-muted)] uppercase tracking-wide">{m.label}</span>
-                                        <span className="text-lg font-bold font-sans" style={{ color: m.color }}>{m.value}%</span>
+                                <div key={idx} className="card-glass border border-[#D4AF37]/30 p-5 rounded-2xl flex flex-col items-center justify-center gap-3 text-center">
+                                    <div className="relative w-24 h-24">
+                                        <Doughnut data={createDoughnutData(m.value, m.color)} options={doughnutOptions as any} />
+                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                            <span className="text-xl font-bold font-sans" style={{ color: m.color }}>{m.value}%</span>
+                                        </div>
                                     </div>
-                                    <div className="w-full h-2 rounded-full bg-[var(--border-color)] overflow-hidden">
-                                        <div className="h-full rounded-full transition-all duration-1000" style={{ width: `${m.value}%`, backgroundColor: m.color }}></div>
-                                    </div>
+                                    <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide leading-tight mt-2">{m.label}</span>
                                 </div>
                             ))}
                         </div>
 
                         {/* RECOMENDAÇÕES */}
-                        <div className="card-glass p-6 rounded-2xl border-l-4 border-l-[var(--danger)] bg-gradient-to-r from-[var(--danger)]/5 to-transparent">
+                        <div className="card-glass p-6 rounded-2xl border-l-4 border-l-[var(--danger)] border-y border-r border-y-[#D4AF37]/20 border-r-[#D4AF37]/20 bg-gradient-to-r from-[var(--danger)]/5 to-transparent">
                             <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                                 <i className="fa-solid fa-brain text-[var(--danger)]"></i> Recomendações Estratégicas (IA)
                             </h3>
                             <div className="flex flex-col md:flex-row gap-6">
                                 <div className="flex-1 space-y-3">
                                     <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                                        A análise preditiva aponta uma exaustão volitiva grave. O atleta apresenta os mesmos traços comportamentais estruturais verificados no período pré-lesão de 2024.
+                                        A análise preditiva aponta uma <span className="text-[#D4AF37] font-semibold">exaustão volitiva grave</span>. O atleta apresenta os mesmos traços comportamentais estruturais verificados no período pré-lesão de 2024.
                                     </p>
                                     <p className="text-sm text-[var(--text-main)] font-semibold">
                                         Ação sugerida: Poupar do próximo jogo fora de casa e iniciar protocolo de descanso cognitivo (Nível 2).
                                     </p>
                                 </div>
-                                <div className="md:w-64 border-l border-[var(--border-color)] pl-6 flex flex-col justify-center">
-                                    <span className="text-xs font-bold text-[var(--text-muted)] uppercase mb-2">Janela de Negociação</span>
+                                <div className="md:w-64 border-l border-[#D4AF37]/30 pl-6 flex flex-col justify-center">
+                                    <span className="text-xs font-bold text-[#D4AF37] uppercase mb-2 drop-shadow-sm">Janela de Negociação</span>
                                     <div className="bg-[var(--danger)]/10 border border-[var(--danger)]/20 text-[var(--danger)] text-center py-2 rounded-lg text-sm font-bold">
                                         Risco de Desvalorização
                                     </div>

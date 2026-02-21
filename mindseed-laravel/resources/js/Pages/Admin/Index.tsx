@@ -93,7 +93,7 @@ export default function AdminDashboard({ stats }: { stats: any }) {
                 {/* KPI CARDS */}
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
                     {/* Card 1 */}
-                    <div className="card-glass p-5 rounded-2xl flex flex-col justify-between">
+                    <div className="card-glass border border-[#D4AF37]/30 p-5 rounded-2xl flex flex-col justify-between">
                         <div className="flex justify-between items-start mb-2">
                             <div>
                                 <p className="text-xs text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-1">Atletas Monitorados</p>
@@ -110,28 +110,28 @@ export default function AdminDashboard({ stats }: { stats: any }) {
                     </div>
 
                     {/* Card 2 */}
-                    <div className="card-glass p-5 rounded-2xl flex flex-col justify-between">
+                    <div className="card-glass border border-[#D4AF37]/30 p-5 rounded-2xl flex flex-col justify-between">
                         <div className="flex justify-between items-start mb-2">
                             <div>
-                                <p className="text-xs text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-1">Consistência de Foco</p>
-                                <h3 className="text-2xl font-bold font-sans">68%</h3>
+                                <p className="text-xs text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-1">Consistência sob Pressão</p>
+                                <h3 className="text-2xl font-bold font-sans">{stats?.avgPressure ?? 0}%</h3>
                             </div>
                             <div className="w-8 h-8 rounded-full bg-[var(--warning)]/20 text-[var(--warning)] flex items-center justify-center">
-                                <i className="fa-solid fa-arrow-trend-down text-sm"></i>
+                                <i className="fa-solid fa-brain text-sm"></i>
                             </div>
                         </div>
                         <div className="h-12 w-full mt-2">
                             <Line data={sparklineData('#F59E0B')} options={sparklineOptions} />
                         </div>
-                        <p className="text-xs text-[var(--text-muted)] mt-2"><span className="text-[var(--warning)] font-bold">-2%</span> vs mês passado</p>
+                        <p className="text-xs text-[var(--text-muted)] mt-2"><span className="text-[var(--warning)] font-bold">Média</span> do elenco</p>
                     </div>
 
                     {/* Card 3 */}
-                    <div className="card-glass p-5 rounded-2xl flex flex-col justify-between border-l-4 border-l-[var(--danger)]">
+                    <div className="card-glass border-4 border-[#D4AF37]/10 border-l-[#EF4444] p-5 rounded-2xl flex flex-col justify-between">
                         <div className="flex justify-between items-start mb-2">
                             <div>
                                 <p className="text-xs text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-1">Risco Comportamental</p>
-                                <h3 className="text-2xl font-bold font-sans">Alta</h3>
+                                <h3 className="text-2xl font-bold font-sans">{stats?.burnoutRiskCount > 0 ? 'Alta' : 'Baixa'}</h3>
                             </div>
                             <div className="w-8 h-8 rounded-full bg-[var(--danger)]/20 text-[var(--danger)] flex items-center justify-center">
                                 <i className="fa-solid fa-triangle-exclamation text-sm"></i>
@@ -140,11 +140,11 @@ export default function AdminDashboard({ stats }: { stats: any }) {
                         <div className="h-12 w-full mt-2">
                             <Line data={sparklineData('#EF4444')} options={sparklineOptions} />
                         </div>
-                        <p className="text-xs text-[var(--text-muted)] mt-2"><span className="text-[var(--danger)] font-bold">+12%</span> volição agressiva</p>
+                        <p className="text-xs text-[var(--text-muted)] mt-2"><span className="text-[var(--danger)] font-bold">{stats?.burnoutRiskCount}</span> atletas em Burnout</p>
                     </div>
 
                     {/* Card 4 */}
-                    <div className="card-glass p-5 rounded-2xl flex flex-col justify-between bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-main)]">
+                    <div className="card-glass border border-[#D4AF37]/30 p-5 rounded-2xl flex flex-col justify-between bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-main)]">
                         <div className="flex justify-between items-start mb-2">
                             <div>
                                 <p className="text-xs text-[var(--text-muted)] font-semibold uppercase tracking-wider mb-1">Alertas (Críticos)</p>
@@ -164,7 +164,7 @@ export default function AdminDashboard({ stats }: { stats: any }) {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
                     {/* Chart Panel */}
-                    <div className="card-glass p-6 rounded-2xl lg:col-span-2 flex flex-col">
+                    <div className="card-glass border border-[#D4AF37]/30 p-6 rounded-2xl lg:col-span-2 flex flex-col">
                         <div className="flex justify-between items-center mb-6">
                             <h3 className="text-lg font-bold">Mapeamento Psicométrico do Elenco</h3>
                             <select className="bg-[var(--bg-main)] border border-[var(--border-color)] text-[var(--text-main)] text-sm rounded-lg px-3 py-1.5 focus:outline-none focus:border-[var(--accent-primary)]">
@@ -184,8 +184,8 @@ export default function AdminDashboard({ stats }: { stats: any }) {
                     </div>
 
                     {/* Top Risks */}
-                    <div className="card-glass p-6 rounded-2xl flex flex-col">
-                        <h3 className="text-lg font-bold mb-6">Top 3 Riscos Ocultos</h3>
+                    <div className="card-glass border border-[#D4AF37]/30 p-6 rounded-2xl flex flex-col">
+                        <h3 className="text-lg font-bold mb-6 text-[#D4AF37]">Top 3 Riscos Ocultos</h3>
                         <div className="flex flex-col gap-4">
 
                             <div className="flex items-center gap-4 p-3 rounded-xl border border-[var(--border-color)] hover:bg-[var(--bg-main)] transition-colors cursor-pointer">

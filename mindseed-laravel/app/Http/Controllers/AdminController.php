@@ -15,10 +15,18 @@ class AdminController extends Controller
         $athletesCount = Athlete::count();
         $criticalAlerts = Alert::where('severity', 'critical')->where('is_resolved', false)->count();
 
+        // Calculate psychoanalytics metrics for the club
+        $avgPressure = \App\Models\DailyMetric::avg('pressure_score') ?? 0;
+        $burnoutRiskCount = \App\Models\DailyMetric::where('burnout_risk', true)->where('date', now()->toDateString())->count();
+        $avgImpulsivity = \App\Models\DailyMetric::avg('impulsivity_score') ?? 0;
+
         return Inertia::render('Admin/Index', [
             'stats' => [
                 'totalAthletes' => $athletesCount,
-                'criticalAlerts' => $criticalAlerts
+                'criticalAlerts' => $criticalAlerts,
+                'avgPressure' => round($avgPressure),
+                'burnoutRiskCount' => $burnoutRiskCount,
+                'avgImpulsivity' => round($avgImpulsivity)
             ]
         ]);
     }
