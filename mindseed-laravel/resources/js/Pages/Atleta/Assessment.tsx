@@ -48,10 +48,10 @@ export default function Assessment() {
                         type="button"
                         onClick={() => handleRating(star)}
                         className={`w-14 h-14 md:w-20 md:h-20 rounded-2xl flex items-center justify-center text-2xl transition-all duration-300 ${val >= star
-                                ? currentQ.invertColor
-                                    ? 'bg-[var(--danger)] text-white scale-110 shadow-lg shadow-[var(--danger)]/50'
-                                    : 'bg-[var(--accent-primary)] text-white scale-110 shadow-lg shadow-[var(--accent-primary)]/50'
-                                : 'bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border-color)] hover:border-[var(--accent-primary)]/50'
+                            ? currentQ.invertColor
+                                ? 'bg-[var(--danger)] text-white scale-110 shadow-lg shadow-[var(--danger)]/50'
+                                : 'bg-[var(--accent-primary)] text-white scale-110 shadow-lg shadow-[var(--accent-primary)]/50'
+                            : 'bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border-color)] hover:border-[var(--accent-primary)]/50'
                             }`}
                     >
                         {star}
@@ -117,7 +117,7 @@ export default function Assessment() {
                         </>
                     ) : (
                         <form onSubmit={submit} className="flex flex-col flex-1 h-full text-center">
-                            <div className="w-20 h-20 mx-auto bg-[var(--success)]/20 text-[var(--success)] rounded-full flex items-center justify-center mb-6 text-4xl">
+                            <div className="w-20 h-20 mx-auto bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] rounded-full flex items-center justify-center mb-6 text-4xl shadow-[0_0_30px_rgba(212,175,55,0.2)]">
                                 <i className="fa-solid fa-check"></i>
                             </div>
                             <h3 className="text-2xl font-bold mb-2">Quase lá!</h3>
@@ -140,7 +140,7 @@ export default function Assessment() {
                                 </button>
                                 <button
                                     type="submit"
-                                    className="flex-1 bg-[var(--success)] text-white px-6 py-3 rounded-xl font-bold hover:bg-emerald-600 transition-all text-lg shadow-lg shadow-[var(--success)]/30"
+                                    className="flex-1 bg-[var(--accent-primary)] text-[#000000] px-6 py-3 rounded-xl font-bold hover:bg-[var(--accent-secondary)] transition-all text-lg shadow-lg shadow-[var(--accent-primary)]/30"
                                 >
                                     Finalizar e Enviar
                                 </button>

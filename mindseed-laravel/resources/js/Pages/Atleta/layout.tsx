@@ -21,7 +21,12 @@ export default function AthleteLayout({ children, title }: { children: React.Rea
                         <i className="fa-regular fa-bell text-xl"></i>
                         <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-[var(--danger)] rounded-full border-2 border-[var(--bg-card)]"></span>
                     </button>
-                    <img src="https://ui-avatars.com/api/?name=Lucas+Moura&background=D4AF37&color=000" alt="User" className="w-10 h-10 rounded-full border-2 border-[var(--border-color)]" />
+                    <div className="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Lucas+Moura&background=D4AF37&color=000" alt="User" className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)]" />
+                        <Link href="/logout" method="post" as="button" className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold border border-[var(--danger)] text-[var(--danger)] hover:bg-[var(--danger)] hover:text-white transition-colors">
+                            <i className="fa-solid fa-right-from-bracket"></i> Sair
+                        </Link>
+                    </div>
                 </div>
             </header>
 
