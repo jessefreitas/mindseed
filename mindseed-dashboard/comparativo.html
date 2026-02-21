@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSeed - Comparativo Estratégico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">
+                    <i class="fa-solid fa-brain" style="color: var(--gold-main);"></i>
+                    MINDSEED
+                </h1>
+                <span class="logo-subtitle">Inteligência Preditiva</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-chess-board"></i> Dashboard Geral
+                </a>
+                <a href="perfil.html" class="nav-item">
+                    <i class="fa-solid fa-user-astronaut"></i> Perfil Individual
+                </a>
+                <a href="comparativo.html" class="nav-item active">
+                    <i class="fa-solid fa-scale-balanced"></i> Comparativo
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Alertas
+                    <span class="badge danger">2</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=Diretor&background=C6A75E&color=0B0B0D" alt="Gestor"
+                        class="avatar">
+                    <div class="user-details">
+                        <span class="user-name">Diretoria Executiva</span>
+                        <span class="user-role">Clube Master</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="page-title">
+                    <h2>Comparativo Estratégico (Disputa de Posição)</h2>
+                    <p>Análise de confronto entre perfis para tomada de decisão (Centroavantes)</p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn btn-primary">
+                        <i class="fa-solid fa-file-pdf"></i> Gerar Relatório Comparativo
+                    </button>
+                    <button class="btn btn-outline-small">
+                        <i class="fa-solid fa-code-compare"></i> Nova Comparação
+                    </button>
+                </div>
+            </header>
+
+            <!-- Comparison Layout -->
+            <div class="comparison-layout">
+
+                <!-- Headers Row (Athlete A vs Athlete B) -->
+                <div class="comp-headers">
+                    <!-- Athlete A -->
+                    <div class="comp-athlete athlete-a">
+                        <img src="https://ui-avatars.com/api/?name=Pedro+Gomes&background=1A1A1D&color=F5F3EE&size=80"
+                            alt="Pedro Gomes" class="avatar-large">
+                        <div class="comp-athlete-info">
+                            <h3>Pedro Gomes</h3>
+                            <span class="badge success-inline"><i class="fa-solid fa-medal"></i> Pronto para
+                                Promoção</span>
+                        </div>
+                    </div>
+
+                    <div class="comp-divider">
+                        <span>VS</span>
+                    </div>
+
+                    <!-- Athlete B -->
+                    <div class="comp-athlete athlete-b">
+                        <div class="comp-athlete-info" style="text-align: right;">
+                            <h3>João Silva</h3>
+                            <span class="badge warning-inline"><i class="fa-solid fa-screwdriver-wrench"></i> Requer
+                                Intervenção</span>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=1A1A1D&color=F5F3EE&size=80"
+                            alt="João Silva" class="avatar-large">
+                    </div>
+                </div>
+
+                <!-- Metrics Comparison -->
+                <div class="comp-body">
+                    <!-- Metric Rows -->
+                    <div class="comp-metrics-list dashboard-panel">
+
+                        <div class="comp-row">
+                            <div class="comp-val val-a text-success">85%</div>
+                            <div class="comp-label">Estabilidade Emocional</div>
+                            <div class="comp-val val-b text-danger">62%</div>
+                        </div>
+
+                        <div class="comp-row">
+                            <div class="comp-val val-a text-success">Alta</div>
+                            <div class="comp-label">Maturidade Competitiva</div>
+                            <div class="comp-val val-b text-warning">Moderada</div>
+                        </div>
+
+                        <div class="comp-row">
+                            <div class="comp-val val-a text-success">Baixa</div>
+                            <div class="comp-label">Impulsividade</div>
+                            <div class="comp-val val-b text-danger">Alta</div>
+                        </div>
+
+                        <div class="comp-row">
+                            <div class="comp-val val-a text-success">92%</div>
+                            <div class="comp-label">Foco Pós-Erro</div>
+                            <div class="comp-val val-b text-warning">74%</div>
+                        </div>
+
+                        <div class="comp-row">
+                            <div class="comp-val val-a text-success">88%</div>
+                            <div class="comp-label">Tomada de Decisão sob Pressão</div>
+                            <div class="comp-val val-b text-danger">65%</div>
+                        </div>
+
+                    </div>
+
+                    <!-- Radar Chart (Aranha) -->
+                    <div class="comp-chart-area dashboard-panel">
+                        <h3 class="panel-title"
+                            style="justify-content: center; font-size: 1rem; color: var(--gold-main);">Mapeamento
+                            Cognitivo Cruzado</h3>
+                        <div class="chart-container" style="height: 380px;">
+                            <canvas id="chart-radar-comparativo"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decision Section -->
+                <div class="decision-panel dashboard-panel mt-4">
+                    <h3 class="panel-title"><i class="fa-solid fa-gavel gold"></i> Parecer Predivito MindSeed</h3>
+                    <p class="decision-text">
+                        Análise de correlação indica que <strong>Pedro Gomes</strong> possui uma estrutura mental 34%
+                        mais consolidada para absorver pressão de titularidade em jogos decisivos ou grandes negociações
+                        neste semestre. <strong>João Silva</strong> demonstra talento bruto equivalente, mas sua
+                        volatilidade emocional atual (-18% em 3 semanas) prevê alto risco de oscilação técnica sob
+                        expectativas altas.
+                    </p>
+                    <div class="decision-actions">
+                        <button class="btn btn-primary">Aprovar Pedro Gomes</button>
+                        <button class="btn btn-ghost">Protocolo de Recuperação: João Silva</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

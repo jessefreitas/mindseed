@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSeed - Perfil Individual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">
+                    <i class="fa-solid fa-brain" style="color: var(--gold-main);"></i>
+                    MINDSEED
+                </h1>
+                <span class="logo-subtitle">Inteligência Preditiva</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-chess-board"></i> Dashboard Geral
+                </a>
+                <a href="perfil.html" class="nav-item active">
+                    <i class="fa-solid fa-user-astronaut"></i> Perfil Individual
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-scale-balanced"></i> Comparativo
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Alertas
+                    <span class="badge danger">2</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=Diretor&background=C6A75E&color=0B0B0D" alt="Gestor"
+                        class="avatar">
+                    <div class="user-details">
+                        <span class="user-name">Diretoria Executiva</span>
+                        <span class="user-role">Clube Master</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="page-title">
+                    <h2>Raio-X Mental: João Silva</h2>
+                    <p>Análise profunda de estabilidade e perfil comportamental</p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn btn-outline-small">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fa-solid fa-file-pdf"></i> Exportar Relatório Individual
+                    </button>
+                </div>
+            </header>
+
+            <!-- Profile Layout -->
+            <div class="profile-layout">
+
+                <!-- Left Column: Athlete Info -->
+                <div class="profile-sidebar dashboard-panel">
+                    <div class="athlete-hero">
+                        <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=1A1A1D&color=F5F3EE&size=120"
+                            alt="João Silva" class="hero-avatar">
+                        <h3 class="hero-name">João Silva</h3>
+                        <span class="hero-pos">Atacante (Centroavante)</span>
+                    </div>
+
+                    <div class="athlete-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Categoria</span>
+                            <span class="meta-val">Profissional Especial</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Idade</span>
+                            <span class="meta-val">24 anos</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Situação Atual</span>
+                            <span class="meta-val alert-text"><i class="fa-solid fa-circle"></i> Oscilação Aguda</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Analysis -->
+                <div class="profile-main">
+
+                    <!-- Mental Evolution Line Chart -->
+                    <div class="dashboard-panel mb-4">
+                        <div class="panel-header-flex">
+                            <h3 class="panel-title">Evolução de Estabilidade Emocional (6 Meses)</h3>
+                            <div class="legend-mini">
+                                <span><i class="fa-solid fa-circle" style="color: var(--gold-main);"></i> Performance
+                                    Ideal</span>
+                                <span><i class="fa-solid fa-circle" style="color: var(--danger);"></i> Queda
+                                    Detectada</span>
+                            </div>
+                        </div>
+                        <div class="chart-container" style="height: 250px;">
+                            <canvas id="chart-evolucao"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Metric Cards -->
+                    <div class="metrics-grid mb-4">
+                        <div class="metric-card">
+                            <div class="metric-info">
+                                <h4>Estabilidade sob Pressão</h4>
+                                <p>Capacidade de manter foco em jogos decisivos</p>
+                            </div>
+                            <div class="metric-visual">
+                                <div class="metric-val danger-text">62%</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill bg-danger" style="width: 62%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-info">
+                                <h4>Controle de Impulsividade</h4>
+                                <p>Reação a provocações e arbitragem</p>
+                            </div>
+                            <div class="metric-visual">
+                                <div class="metric-val warning-text">70%</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill bg-warning" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-info">
+                                <h4>Maturidade Competitiva</h4>
+                                <p>Entendimento tático e foco no resultado longo prazo</p>
+                            </div>
+                            <div class="metric-visual">
+                                <div class="metric-val success-text">88%</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill bg-success" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Strategic Recommendations -->
+                    <div class="dashboard-panel recommendation-panel">
+                        <h3 class="panel-title"><i class="fa-solid fa-bullseye gold"></i> Recomendações Estratégicas:
+                            MindSeed</h3>
+                        <div class="recommendation-content">
+                            <div class="rec-block">
+                                <h5>Diagnóstico Preditivo</h5>
+                                <p>O atleta apresenta queda de 18% na estabilidade nas últimas 3 semanas, incompatível
+                                    com negociação imediata ou titularidade absoluta em jogos de alta tensão.
+                                    Indicativos correlacionam-se com possível inícios de fadiga mental (Burnout
+                                    primário).</p>
+                            </div>
+                            <div class="rec-block">
+                                <h5>Ação Sugerida (Comissão / Gestão)</h5>
+                                <p>Reduzir carga de exposição na mídia imediata. Iniciar protocolo de recuperação
+                                    cognitiva de 14 dias antes de precificá-lo no mercado.</p>
+                            </div>
+                            <div class="rec-block status-lock">
+                                <h5>Janela de Negociação</h5>
+                                <span class="badge danger-pill"><i class="fa-solid fa-lock"></i> Retenção Temporária
+                                    Sugerida</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

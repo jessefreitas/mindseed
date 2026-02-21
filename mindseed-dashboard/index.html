@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSeed - Dashboard Institucional</title>
+    <!-- Google Fonts: Montserrat & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">
+                    <i class="fa-solid fa-brain" style="color: var(--gold-main);"></i> 
+                    MINDSEED
+                </h1>
+                <span class="logo-subtitle">Inteligência Preditiva</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <i class="fa-solid fa-chess-board"></i> Dashboard Geral
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-user-astronaut"></i> Perfil Individual
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-scale-balanced"></i> Comparativo
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Alertas 
+                    <span class="badge danger">2</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=Diretor&background=C6A75E&color=0B0B0D" alt="Gestor" class="avatar">
+                    <div class="user-details">
+                        <span class="user-name">Diretoria Executiva</span>
+                        <span class="user-role">Clube Master</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="page-title">
+                    <h2>Visão Executiva do Elenco</h2>
+                    <p>Visão estratégica de risco e performance mental</p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn btn-primary">
+                        <i class="fa-solid fa-file-pdf"></i> Gerar Relatório Geral
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                
+                <!-- KPI Cards -->
+                <div class="kpi-cards">
+                    <!-- Card 1 -->
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span class="kpi-title">Estabilidade Emocional</span>
+                            <i class="fa-solid fa-water kpi-icon gold"></i>
+                        </div>
+                        <div class="kpi-body">
+                            <div class="kpi-value">82<span class="kpi-percent">%</span></div>
+                            <div class="kpi-chart-mini">
+                                <canvas id="chart-estabilidade"></canvas>
+                            </div>
+                        </div>
+                        <div class="kpi-footer">
+                            <span class="status-text target-met"><i class="fa-solid fa-arrow-up"></i> Alta sob pressão</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span class="kpi-title">Consistência sob Pressão</span>
+                            <i class="fa-solid fa-bolt kpi-icon gold"></i>
+                        </div>
+                        <div class="kpi-body">
+                            <div class="kpi-value">76<span class="kpi-percent">%</span></div>
+                            <div class="kpi-sparkline">
+                                <canvas id="chart-consistencia"></canvas>
+                            </div>
+                        </div>
+                        <div class="kpi-footer">
+                            <span class="status-text target-warning"><i class="fa-solid fa-minus"></i> Margem de oscilação</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="kpi-card risk-card">
+                        <div class="kpi-header">
+                            <span class="kpi-title">Risco Comportamental</span>
+                            <i class="fa-solid fa-skull kpi-icon danger"></i>
+                        </div>
+                        <div class="kpi-body">
+                            <div class="kpi-raw-value danger-text">Elevado</div>
+                            <div class="kpi-desc">Indicativos de estresse crônico detectados em atletas chave.</div>
+                        </div>
+                        <div class="kpi-footer">
+                            <span class="status-text danger-text"><i class="fa-solid fa-circle-exclamation"></i> Requer atenção imediata</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="kpi-card attention-card">
+                        <div class="kpi-header">
+                            <span class="kpi-title">Atletas em Atenção</span>
+                            <i class="fa-solid fa-user-shield kpi-icon warning"></i>
+                        </div>
+                        <div class="kpi-body">
+                            <div class="kpi-value">3</div>
+                        </div>
+                        <div class="kpi-footer">
+                            <button class="btn btn-outline-small">Ver Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Charts Area -->
+                <div class="main-charts-row">
+                    <!-- Distribution Chart -->
+                    <div class="dashboard-panel chart-panel">
+                        <h3 class="panel-title">Mapeamento Psicométrico do Elenco</h3>
+                        <div class="chart-container large">
+                            <canvas id="chart-mapeamento"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Risks List -->
+                    <div class="dashboard-panel list-panel">
+                        <h3 class="panel-title">Top 3 Riscos Ocultos <span class="badge danger">Crítico</span></h3>
+                        <ul class="risk-list">
+                            <li class="risk-item">
+                                <div class="athlete-info">
+                                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=1A1A1D&color=F5F3EE" alt="Goleiro" class="athlete-avatar">
+                                    <div class="athlete-details">
+                                        <span class="athlete-name">João Silva</span>
+                                        <span class="athlete-pos">Atacante - Risco de Burnout</span>
+                                    </div>
+                                </div>
+                                <div class="risk-action">
+                                    <button class="btn btn-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                            </li>
+                            <li class="risk-item">
+                                <div class="athlete-info">
+                                    <img src="https://ui-avatars.com/api/?name=Pedro+Gomes&background=1A1A1D&color=F5F3EE" alt="Zagueiro" class="athlete-avatar">
+                                    <div class="athlete-details">
+                                        <span class="athlete-name">Pedro Gomes</span>
+                                        <span class="athlete-pos">Meia - Queda de estabilidade (-15%)</span>
+                                    </div>
+                                </div>
+                                <div class="risk-action">
+                                    <button class="btn btn-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                            </li>
+                            <li class="risk-item">
+                                <div class="athlete-info">
+                                    <img src="https://ui-avatars.com/api/?name=Lucas+Moura&background=1A1A1D&color=F5F3EE" alt="Atacante" class="athlete-avatar">
+                                    <div class="athlete-details">
+                                        <span class="athlete-name">Lucas Moura</span>
+                                        <span class="athlete-pos">Lateral - Luto / Desfoco Agudo</span>
+                                    </div>
+                                </div>
+                                <div class="risk-action">
+                                    <button class="btn btn-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="btn btn-ghost full-width">Ver todos (6)</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

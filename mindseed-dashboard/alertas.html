@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSeed - Central de Alertas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">
+                    <i class="fa-solid fa-brain" style="color: var(--gold-main);"></i>
+                    MINDSEED
+                </h1>
+                <span class="logo-subtitle">Inteligência Preditiva</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-chess-board"></i> Dashboard Geral
+                </a>
+                <a href="perfil.html" class="nav-item">
+                    <i class="fa-solid fa-user-astronaut"></i> Perfil Individual
+                </a>
+                <a href="comparativo.html" class="nav-item">
+                    <i class="fa-solid fa-scale-balanced"></i> Comparativo
+                </a>
+                <a href="alertas.html" class="nav-item active">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Alertas
+                    <span class="badge danger">2</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=Diretor&background=C6A75E&color=0B0B0D" alt="Gestor"
+                        class="avatar">
+                    <div class="user-details">
+                        <span class="user-name">Diretoria Executiva</span>
+                        <span class="user-role">Clube Master</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="page-title">
+                    <h2>Central de Alertas Semafóricos</h2>
+                    <p>Monitoramento ativo de quedas de performance, burnout e luto</p>
+                </div>
+                <div class="topbar-actions">
+                    <div class="filter-group">
+                        <button class="btn btn-outline-small active">Todos</button>
+                        <button class="btn btn-outline-small"
+                            style="color: var(--danger); border-color: var(--danger);">Críticos (2)</button>
+                        <button class="btn btn-outline-small"
+                            style="color: var(--warning); border-color: var(--warning);">Atenção (3)</button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Alerts List Area -->
+            <div class="alerts-layout">
+                <div class="dashboard-panel">
+
+                    <div class="alert-list-header">
+                        <span>Status</span>
+                        <span>Atleta</span>
+                        <span>Motivo Principal</span>
+                        <span>Oscilação (30d)</span>
+                        <span>Ação Sugerida</span>
+                    </div>
+
+                    <!-- Critical Alert (Red) -->
+                    <div class="alert-row critical">
+                        <div class="alert-status">
+                            <div class="status-dot dot-red"></div>
+                            <span class="status-label">Imediato</span>
+                        </div>
+                        <div class="alert-athlete">
+                            <img src="https://ui-avatars.com/api/?name=Lucas+Moura&background=1A1A1D&color=F5F3EE"
+                                alt="Lucas">
+                            <div>
+                                <h4 class="alert-name">Lucas Moura</h4>
+                                <span class="alert-pos">Lateral Direito</span>
+                            </div>
+                        </div>
+                        <div class="alert-reason">
+                            <i class="fa-solid fa-cloud-bolt"></i> Luto Agudo / Desfoco
+                        </div>
+                        <div class="alert-metric danger-text">
+                            - 28%
+                        </div>
+                        <div class="alert-action">
+                            <button class="btn btn-danger-action" onclick="openModal()">Ver Detalhes</button>
+                        </div>
+                    </div>
+
+                    <!-- Critical Alert (Red) -->
+                    <div class="alert-row critical">
+                        <div class="alert-status">
+                            <div class="status-dot dot-red"></div>
+                            <span class="status-label">Imediato</span>
+                        </div>
+                        <div class="alert-athlete">
+                            <img src="https://ui-avatars.com/api/?name=Roberto+Dias&background=1A1A1D&color=F5F3EE"
+                                alt="Roberto">
+                            <div>
+                                <h4 class="alert-name">Roberto Dias</h4>
+                                <span class="alert-pos">Zagueiro</span>
+                            </div>
+                        </div>
+                        <div class="alert-reason">
+                            <i class="fa-solid fa-fire"></i> Risco Elevado de Burnout
+                        </div>
+                        <div class="alert-metric danger-text">
+                            - 22%
+                        </div>
+                        <div class="alert-action">
+                            <button class="btn btn-danger-action" onclick="openModal()">Ver Detalhes</button>
+                        </div>
+                    </div>
+
+                    <!-- Warning Alert (Yellow) -->
+                    <div class="alert-row warning-level">
+                        <div class="alert-status">
+                            <div class="status-dot dot-yellow"></div>
+                            <span class="status-label">Atenção</span>
+                        </div>
+                        <div class="alert-athlete">
+                            <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=1A1A1D&color=F5F3EE"
+                                alt="João">
+                            <div>
+                                <h4 class="alert-name">João Silva</h4>
+                                <span class="alert-pos">Atacante</span>
+                            </div>
+                        </div>
+                        <div class="alert-reason">
+                            <i class="fa-solid fa-arrows-up-down"></i> Oscilação Incomum
+                        </div>
+                        <div class="alert-metric warning-text">
+                            - 15%
+                        </div>
+                        <div class="alert-action">
+                            <button class="btn btn-outline-small">Acompanhar</button>
+                        </div>
+                    </div>
+
+                    <!-- Stable Alert (Green) -->
+                    <div class="alert-row stable">
+                        <div class="alert-status">
+                            <div class="status-dot dot-green"></div>
+                            <span class="status-label">Estável</span>
+                        </div>
+                        <div class="alert-athlete">
+                            <img src="https://ui-avatars.com/api/?name=Pedro+Gomes&background=1A1A1D&color=F5F3EE"
+                                alt="Pedro">
+                            <div>
+                                <h4 class="alert-name">Pedro Gomes</h4>
+                                <span class="alert-pos">Zagueiro</span>
+                            </div>
+                        </div>
+                        <div class="alert-reason">
+                            <i class="fa-solid fa-shield-halved"></i> Foco Consolidado
+                        </div>
+                        <div class="alert-metric success-text">
+                            + 4%
+                        </div>
+                        <div class="alert-action">
+                            <button class="btn btn-ghost">Relatório</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Alert Modal (Hidden by Default, opened via JS) -->
+    <div id="alertModal" class="modal-overlay">
+        <div class="modal-content danger-modal">
+            <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-triangle-exclamation"></i> Sinalização de Crise: Lucas Moura</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-card">
+                    <h4>Diagnóstico do Sistema</h4>
+                    <p>Foi detectada uma queda de <strong>28% na estabilidade volitiva</strong> do atleta nos últimos 15
+                        dias. O padrão de respostas aos testes diários indica fadiga emocional profunda correlacionada a
+                        possível episódio de evento de vida grave (Luto / Trauma).</p>
+                </div>
+
+                <div class="modal-card recommendation-bg">
+                    <h4>Recomendação Ativa</h4>
+                    <p>O atleta NÃO deve ser relacionado para jogos de eliminação direta nesta semana. O risco de erro
+                        impulsivo ou travamento cognitivo é superior a 75%.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger-action full-width" style="margin-bottom: 0;">Iniciar Protocolo de
+                    Intervenção MindSeed</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function openModal() {
+            document.getElementById('alertModal').classList.add('active');
+        }
+        function closeModal() {
+            document.getElementById('alertModal').classList.remove('active');
+        }
+    </script>
+</body>
+
+</html>
