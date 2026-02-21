@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-
 export default function AthleteLayout({ children }: { children: React.ReactNode }) {
     // It's a server component by default, but we'll cheat a bit with a simple client component wrapper if we need usePathname.
     // Actually, layout can be just UI, but let's make a top nav instead of a sidebar for the athlete (mobile first).
