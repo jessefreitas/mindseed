@@ -10,7 +10,7 @@ use App\Http\Controllers\AssessmentController;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return Inertia::render('Welcome');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
