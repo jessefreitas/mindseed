@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* LIGHT VIVID THEME */
+  --bg-main: #FFFFFF;
+  --bg-card: #F8FAFC;
+  /* Slate 50 */
+  --text-main: #0F172A;
+  /* Slate 900 */
+  --text-muted: #64748B;
+  /* Slate 500 */
+  --border-color: #E2E8F0;
+  /* Slate 200 */
+
+  /* Accent & Semantic - Enterprise Light */
+  --accent-primary: #1D4ED8;
+  /* Blue 700 - Corporate */
+  --accent-secondary: #0F172A;
+  /* Slate 900 */
+  --accent-tertiary: #0369A1;
+  /* Sky 700 */
+
+  --danger: #EF4444;
+  --warning: #F59E0B;
+  --success: #10B981;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* DARK VIVID THEME */
+    --bg-main: #020617;
+    /* Slate 950 */
+    --bg-card: #0F172A;
+    /* Slate 900 */
+    --text-main: #F8FAFC;
+    /* Slate 50 */
+    --text-muted: #94A3B8;
+    /* Slate 400 */
+    --border-color: #1E293B;
+    /* Slate 800 */
+
+    /* Accent & Semantic - Enterprise Dark */
+    --accent-primary: #2563EB;
+    /* Blue 600 */
+    --accent-secondary: #3B82F6;
+    /* Blue 500 */
+    --accent-tertiary: #0EA5E9;
+    /* Sky 500 */
+
+    --danger: #F87171;
+    --warning: #FBBF24;
+    --success: #34D399;
+  }
+}
+
+@theme inline {
+  --color-bg-main: var(--bg-main);
+  --color-bg-card: var(--bg-card);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-tertiary: var(--accent-tertiary);
+
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+
+  --color-border-color: var(--border-color);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Utility Clases Específicas MindSeed */
+.card-glass {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+}
