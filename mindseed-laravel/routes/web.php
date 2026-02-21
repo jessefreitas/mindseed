@@ -27,3 +27,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// MindSeed 360 AI & Integrations API (Stubs for Future Expansion)
+Route::prefix('api')->group(function () {
+    Route::post('/ai/coach/protocol', [\App\Http\Controllers\Api\AiCoachController::class, 'generateProtocol']);
+    Route::post('/wearables/webhook', [\App\Http\Controllers\Api\WearableIngestionController::class, 'receiveWebhook']);
+    
+    // PDF Export Endpoint (Requires DOMPDF on VPS)
+    Route::get('/reports/export/{athlete_id}', function ($athlete_id) {
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Executive Report PDF generation triggered (Stub).'
+        ]);
+    })->name('api.reports.export');
+});
