@@ -40,9 +40,9 @@ export default function Comparison() {
             {
                 label: 'Pedro Gomes',
                 data: [85, 92, 88, 80, 75],
-                backgroundColor: 'rgba(14, 165, 233, 0.2)', // var(--accent-primary) translúcido
-                borderColor: '#0EA5E9',
-                pointBackgroundColor: '#0EA5E9',
+                backgroundColor: 'rgba(212, 175, 55, 0.2)', // Gold translúcido
+                borderColor: '#D4AF37',
+                pointBackgroundColor: '#D4AF37',
                 pointBorderColor: 'var(--bg-main)',
                 borderWidth: 2,
                 pointRadius: 4
@@ -79,7 +79,7 @@ export default function Comparison() {
             legend: { position: 'top' as const, labels: { color: 'var(--text-main)', usePointStyle: true, padding: 20 } },
             tooltip: {
                 backgroundColor: 'var(--bg-card)',
-                titleColor: 'var(--accent-primary)',
+                titleColor: '#D4AF37',
                 bodyColor: 'var(--text-muted)',
                 borderColor: 'var(--border-color)',
                 borderWidth: 1,
@@ -98,17 +98,17 @@ export default function Comparison() {
                 <div className="flex flex-col gap-6">
 
                     {/* HEADERS COMPARATIVOS */}
-                    <div className="card-glass p-6 rounded-2xl flex items-center justify-between">
+                    <div className="card-glass border border-[#D4AF37]/30 p-6 rounded-2xl flex items-center justify-between">
                         {/* Athlete A */}
                         <div className="flex items-center gap-4 flex-1">
-                            <img src="https://ui-avatars.com/api/?name=Pedro+Gomes&background=0F172A&color=fff&size=80" alt="Pedro" className="w-20 h-20 rounded-full border-2 border-[var(--accent-primary)]" />
+                            <img src="https://ui-avatars.com/api/?name=Pedro+Gomes&background=0F172A&color=fff&size=80" alt="Pedro" className="w-20 h-20 rounded-full border-2 border-[#D4AF37]" />
                             <div>
                                 <h3 className="text-xl font-bold font-sans">Pedro Gomes</h3>
                                 <span className="text-sm font-semibold text-[var(--success)] border border-[var(--success)] px-2 py-0.5 rounded-full bg-[var(--success)]/10">Titular (1ª Opção)</span>
                             </div>
                         </div>
 
-                        <div className="px-8 font-bold text-2xl text-[var(--accent-primary)] opacity-50 font-serif italic">
+                        <div className="px-8 font-bold text-2xl text-[#D4AF37] opacity-80 font-serif italic text-shadow-gold">
                             VS
                         </div>
 
@@ -126,10 +126,10 @@ export default function Comparison() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                         {/* Lista de Metricas */}
-                        <div className="card-glass p-6 rounded-2xl flex flex-col gap-2">
-                            <h3 className="text-lg font-bold mb-4">Geração de Valor (MindSet)</h3>
+                        <div className="card-glass border border-[#D4AF37]/30 p-6 rounded-2xl flex flex-col gap-2">
+                            <h3 className="text-lg font-bold mb-4 text-[#D4AF37]">Geração de Valor (MindSet)</h3>
 
-                            <div className="flex justify-between items-center py-3 border-b border-[var(--border-color)] group hover:bg-[var(--bg-main)] px-2 rounded transition-colors">
+                            <div className="flex justify-between items-center py-3 border-b border-[#D4AF37]/20 group hover:bg-[var(--bg-main)] px-2 rounded transition-colors">
                                 <span className="w-16 font-bold text-lg text-[var(--success)]">85%</span>
                                 <span className="flex-1 text-center text-xs text-[var(--text-muted)] uppercase tracking-widest font-bold">Estabilidade Emocional</span>
                                 <span className="w-16 font-bold text-lg text-right text-[var(--danger)]">62%</span>
@@ -160,8 +160,8 @@ export default function Comparison() {
                             </div>
 
                             {/* PARECER PREDITIVO */}
-                            <div className="mt-6 p-4 rounded-xl border border-[var(--accent-primary)]/40 bg-gradient-to-r from-[var(--bg-card)] to-[var(--accent-primary)]/10">
-                                <h4 className="text-[var(--accent-primary)] font-bold mb-2 flex items-center gap-2">
+                            <div className="mt-6 p-4 rounded-xl border border-[#D4AF37]/40 bg-gradient-to-r from-[var(--bg-card)] to-[#D4AF37]/10">
+                                <h4 className="text-[#D4AF37] font-bold mb-2 flex items-center gap-2">
                                     <i className="fa-solid fa-brain"></i> Parecer Preditivo MindSeed
                                 </h4>
                                 <p className="text-sm text-[var(--text-main)] leading-relaxed">
@@ -179,7 +179,7 @@ export default function Comparison() {
                         </div>
 
                         {/* Radar Chart */}
-                        <div className="card-glass p-6 rounded-2xl flex items-center justify-center min-h-[400px]">
+                        <div className="card-glass border border-[#D4AF37]/30 p-6 rounded-2xl flex items-center justify-center min-h-[400px]">
                             <div className="w-full h-full relative">
                                 <Radar data={radarData} options={radarOptions} />
                             </div>
