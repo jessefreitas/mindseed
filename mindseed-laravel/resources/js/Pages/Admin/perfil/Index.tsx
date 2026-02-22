@@ -27,7 +27,7 @@ ChartJS.register(
     ArcElement
 );
 
-export default function IndividualProfile() {
+export default function IndividualProfile({ athlete }: { athlete: any }) {
     const user = usePage<PageProps>().props.auth.user;
     const [mounted, setMounted] = useState(false);
 
@@ -133,9 +133,13 @@ export default function IndividualProfile() {
                                 <p className="text-xs text-[var(--text-muted)]">Queda abrupta de retenção emocional detectada nos últimos 15 dias.</p>
                             </div>
 
-                            <button className="w-full py-2.5 bg-[var(--bg-main)] border border-[var(--border-color)] text-[var(--text-main)] font-semibold rounded-lg hover:bg-[var(--text-main)] hover:text-[var(--bg-main)] transition-colors text-sm">
-                                Baixar Laudo PDF
-                            </button>
+                            <a
+                                href={athlete ? `/api/reports/export/${athlete.id}` : '#'}
+                                target="_blank"
+                                className="w-full inline-block text-center py-2.5 bg-[var(--bg-main)] border border-[var(--border-color)] text-[var(--text-main)] font-semibold rounded-lg hover:bg-[var(--text-main)] hover:text-[var(--bg-main)] transition-colors text-sm"
+                            >
+                                <i className="fa-solid fa-file-pdf mr-2"></i> Baixar Laudo PDF
+                            </a>
                         </div>
                     </div>
 
