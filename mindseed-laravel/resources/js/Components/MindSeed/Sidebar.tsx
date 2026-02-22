@@ -5,6 +5,7 @@ export default function Sidebar() {
 
     const links = [
         { href: "/admin", label: "Dashboard Geral", icon: "fa-chess-board" },
+        { href: "/admin/analytics", label: "Data Discovery", icon: "fa-flask" },
         { href: "/admin/perfil", label: "Perfil Individual", icon: "fa-user-astronaut" },
         { href: "/admin/comparativo", label: "Comparativo", icon: "fa-scale-balanced" },
         { href: "/admin/alertas", label: "Alertas", icon: "fa-triangle-exclamation", alert: 2 },

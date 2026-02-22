@@ -31,6 +31,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/familia', [FamiliaController::class, 'dashboard'])->name('familia.dashboard');
 });
 
+// Família / Staff Pessoal
+Route::middleware(['auth', 'verified'])->prefix('familia')->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\FamilyController::class, 'dashboard'])->name('familia.dashboard');
+});
+
 require __DIR__.'/auth.php';
 
 // MindSeed 360 AI & Integrations API (Stubs for Future Expansion)
@@ -38,6 +43,15 @@ Route::prefix('api')->group(function () {
     Route::post('/ai/coach/protocol', [\App\Http\Controllers\Api\AiCoachController::class, 'generateProtocol']);
     Route::post('/wearables/webhook', [\App\Http\Controllers\Api\WearableIngestionController::class, 'receiveWebhook']);
     
+    // Admin Analytics Data Discovery
+    Route::get('/analytics', [\App\Http\Controllers\AnalyticsController::class, 'index'])->name('admin.analytics');
+
     // PDF Export Endpoint (DOMPDF)
     Route::get('/reports/export/{athlete_id}', [\App\Http\Controllers\ReportController::class, 'export'])->name('api.reports.export');
+});
+
+// Oura OAuth2 Routes (Athlete requires auth to link device)
+Route::middleware(['auth', 'verified'])->prefix('wearables')->group(function () {
+    Route::get('/oura/redirect', [\App\Http\Controllers\WearableOAuthController::class, 'redirect'])->name('wearables.oura.redirect');
+    Route::get('/oura/callback', [\App\Http\Controllers\WearableOAuthController::class, 'callback'])->name('wearables.callback');
 });

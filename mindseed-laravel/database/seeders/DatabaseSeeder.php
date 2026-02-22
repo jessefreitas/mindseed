@@ -38,22 +38,35 @@ class DatabaseSeeder extends Seeder
             'subrole' => 'comissao', // Restricted RBAC Access
         ]);
 
-        // 2. Create Athlete User & Athlete Profile
+        // 2. Create Base Athlete User (Lucas Moura)
         $athleteUser = User::create([
-            'name' => 'Pedro Gomes',
-            'email' => 'pedro@mindseed.com',
+            'name' => 'Lucas Moura',
+            'email' => 'pedro@mindseed.com', // keep old email login for ease
             'password' => Hash::make('password'),
             'role' => 'atleta',
-            'avatar' => 'https://ui-avatars.com/api/?name=Pedro+Gomes&background=10B981&color=fff',
+            'subrole' => null,
+            'avatar' => 'https://ui-avatars.com/api/?name=Lucas+Moura&background=D4AF37&color=000',
         ]);
 
         $athlete = Athlete::create([
             'user_id' => $athleteUser->id,
-            'name' => 'Pedro Gomes',
-            'age' => 17,
+            'name' => 'Lucas Moura',
+            'age' => 20,
             'sport' => 'Futebol',
-            'team' => 'Sub-18 (Titular)',
-            'status' => 'critical',
+            'team' => 'Profissional',
+            'status' => 'warning',
+            'position' => 'Atacante',
+        ]);
+
+        // 2.5 Create Family Member linked to Athlete
+        User::create([
+            'name' => 'Mariana Moura (Esposa)',
+            'email' => 'familia@mindseed.com',
+            'password' => Hash::make('password'),
+            'role' => 'familia',
+            'subrole' => null,
+            'linked_athlete_id' => $athlete->id,
+            'avatar' => 'https://ui-avatars.com/api/?name=Mariana+M&background=F472B6&color=fff',
         ]);
 
         // 3. Create Family User & Relation

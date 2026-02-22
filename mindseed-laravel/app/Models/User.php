@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'role',
         'subrole',
+        'linked_athlete_id',
         'avatar',
     ];
 
@@ -57,5 +58,13 @@ class User extends Authenticatable
     public function family()
     {
         return $this->hasOne(Family::class);
+    }
+
+    /**
+     * The athlete linked to this user (e.g., if user is a family member).
+     */
+    public function linkedAthlete()
+    {
+        return $this->belongsTo(Athlete::class, 'linked_athlete_id');
     }
 }

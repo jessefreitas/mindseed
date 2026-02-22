@@ -5,6 +5,7 @@ export interface User {
     email_verified_at?: string;
     role: string;
     subrole?: 'gestao' | 'comissao' | 'medico' | null;
+    linked_athlete_id?: number | null;
 }
 
 export type PageProps<
