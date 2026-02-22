@@ -17,8 +17,8 @@ class AnalyticsController extends Controller
     {
         $user = auth()->user();
         
-        // Only Gestor or Comissao can view analytics
-        if (!in_array($user->role, ['gestao', 'comissao'])) {
+        // Only Admin, Gestor or Comissao can view analytics
+        if (!in_array($user->role, ['admin', 'gestao', 'comissao'])) {
             abort(403, 'Acesso restrito ao módulo de Análise de Dados Avançada.');
         }
 
