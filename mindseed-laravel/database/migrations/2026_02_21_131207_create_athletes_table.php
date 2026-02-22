@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('sport');
             $table->string('team');
             $table->string('status');
+            $table->string('position')->nullable();
             $table->timestamps();
         });
     }

@@ -13,6 +13,7 @@ class Athlete extends Model
         'sport',
         'team',
         'status',
+        'position',
     ];
 
     public function user()
