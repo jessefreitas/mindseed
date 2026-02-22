@@ -24,7 +24,34 @@ ChartJS.register(
     Filler
 );
 
+import { useState } from 'react';
+
 export default function Perfil({ athlete }: { athlete: any }) {
+    const [syncing, setSyncing] = useState(false);
+
+    const syncOura = async () => {
+        if (!athlete) {
+            alert('ID do atleta não encontrado.');
+            return;
+        }
+        setSyncing(true);
+        try {
+            await fetch('/api/wearables/webhook', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    athlete_id: athlete.id,
+                    heart_rate_variability: 25, // Simulated critical HRV
+                    sleep_score: 40,
+                    device_type: 'Oura Ring Gen3'
+                })
+            });
+            alert('Wearable Oura Ring sincronizado!\nAlerta de Risco Somático disparado para a Gestão.');
+        } catch (e) {
+            console.error(e);
+        }
+        setSyncing(false);
+    };
 
     // Mock evolutive data for the Athlete
     const labels = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"];
@@ -144,8 +171,12 @@ export default function Perfil({ athlete }: { athlete: any }) {
                                 <p className="text-[10px] text-[var(--text-muted)]">Não Conectado</p>
                             </div>
                         </div>
-                        <button className="text-[10px] font-bold text-black bg-white hover:bg-gray-200 px-3 py-1.5 rounded-lg transition-colors">
-                            Conectar
+                        <button
+                            onClick={syncOura}
+                            disabled={syncing}
+                            className="text-[10px] font-bold text-black bg-white hover:bg-gray-200 px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50"
+                        >
+                            {syncing ? 'Sincronizando...' : 'Conectar / Sync'}
                         </button>
                     </div>
                 </div>
