@@ -220,6 +220,79 @@ export default function AdminDashboard({ stats }: { stats: any }) {
                     </div>
 
                 </div>
+
+                {/* HEATMAP / MATRIZ DE RISCO */}
+                <div className="mt-10 mb-8">
+                    <div className="flex justify-between items-center mb-6">
+                        <h3 className="text-lg font-bold"><i className="fa-solid fa-layer-group text-[#D4AF37] mr-2"></i> Matriz de Risco Oculto</h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        {/* Matriz Visual */}
+                        <div className="card-glass border border-[#D4AF37]/30 p-8 rounded-2xl lg:col-span-2 flex items-center justify-center">
+
+                            <div className="relative w-full max-w-lg aspect-auto">
+                                {/* Matriz 3x3 */}
+                                <div className="grid grid-cols-3 grid-rows-3 gap-2 h-72">
+                                    {/* Linha 1: Foco Baixo */}
+                                    <div className="bg-[#EF4444]/20 border border-[#EF4444]/50 rounded-lg text-center flex flex-col justify-center items-center p-2 transition-all hover:bg-[#EF4444]/40 cursor-pointer">
+                                        <span className="text-xs font-bold text-[#EF4444]">Fadiga Extrema</span>
+                                        <span className="text-[10px] text-white mt-1 font-semibold">Lucas, Marcos</span>
+                                    </div>
+                                    <div className="bg-[#F59E0B]/20 border border-[#F59E0B]/50 rounded-lg text-center flex flex-col justify-center items-center p-2 transition-all hover:bg-[#F59E0B]/40 cursor-pointer">
+                                        <span className="text-xs font-bold text-[#F59E0B]">Cansaço Alto</span>
+                                    </div>
+                                    <div className="bg-[#10B981]/20 border border-[#10B981]/50 rounded-lg text-center flex flex-col justify-center items-center p-2 transition-all hover:bg-[#10B981]/40 cursor-pointer">
+                                        <span className="text-xs font-bold text-[#10B981]">Desatento</span>
+                                        <span className="text-[10px] text-white mt-1 font-semibold">João S.</span>
+                                    </div>
+
+                                    {/* Linha 2: Foco Médio */}
+                                    <div className="bg-[#EF4444]/20 border border-[#EF4444]/50 rounded-lg text-center flex flex-col justify-center items-center p-2 transition-all hover:bg-[#EF4444]/40 cursor-pointer">
+                                        <span className="text-xs font-bold text-[#EF4444]">Risco de Lesão</span>
+                                    </div>
+                                    <div className="bg-[#10B981]/10 border border-[#10B981]/30 rounded-lg text-center flex flex-col justify-center items-center p-2 transition-all hover:bg-[#10B981]/30 cursor-pointer">
+                                        <span className="text-xs font-bold text-white">Manutenção</span>
+                                        <span className="text-[10px] text-[#A3A3A3] mt-1 font-semibold">14 Atletas</span>
+                                    </div>
+                                    <div className="bg-[#10B981]/20 border border-[#10B981]/50 rounded-lg text-center flex flex-col justify-center items-center p-2 transition-all hover:bg-[#10B981]/40 cursor-pointer">
+                                        <span className="text-xs font-bold text-[#10B981]">Estável</span>
+                                        <span className="text-[10px] text-white mt-1 font-semibold">Thiago L.</span>
+                                    </div>
+
+                                    {/* Linha 3: Foco Alto */}
+                                    <div className="bg-[#F59E0B]/20 border border-[#F59E0B]/50 rounded-lg text-center flex flex-col justify-center items-center p-2 transition-all hover:bg-[#F59E0B]/40 cursor-pointer">
+                                        <span className="text-xs font-bold text-[#F59E0B]">Mental Forte, Corpo Exausto</span>
+                                    </div>
+                                    <div className="bg-[#10B981]/20 border border-[#10B981]/50 rounded-lg text-center flex flex-col justify-center items-center p-2 transition-all hover:bg-[#10B981]/40 cursor-pointer">
+                                        <span className="text-xs font-bold text-[#10B981]">Boa Forma</span>
+                                        <span className="text-[10px] text-white mt-1 font-semibold">12 Atletas</span>
+                                    </div>
+                                    <div className="bg-[var(--accent-primary)]/20 border border-[var(--accent-primary)]/50 rounded-lg text-center flex flex-col justify-center items-center p-2 shadow-[0_0_15px_rgba(212,175,55,0.2)] transition-all hover:bg-[var(--accent-primary)]/40 cursor-pointer">
+                                        <span className="text-xs font-bold text-[#D4AF37]">Peak Performance</span>
+                                        <span className="text-[10px] text-white mt-1 font-semibold">Pedro Gomes (+4)</span>
+                                    </div>
+                                </div>
+                                {/* Eixos */}
+                                <div className="absolute -left-10 top-1/2 -translate-y-1/2 -rotate-90 text-[10px] text-[#A3A3A3] font-bold tracking-widest whitespace-nowrap">CARGA FÍSICA (FADIGA) &rarr;</div>
+                                <div className="absolute left-1/2 -bottom-8 -translate-x-1/2 text-[10px] text-[#A3A3A3] font-bold tracking-widest whitespace-nowrap">FOCO COGNITIVO &rarr;</div>
+                            </div>
+
+                        </div>
+
+                        {/* Legenda / Detalhes */}
+                        <div className="card-glass border border-[#D4AF37]/30 p-6 rounded-2xl flex flex-col justify-center">
+                            <h4 className="font-bold text-sm mb-4">Interpretação da Matriz</h4>
+                            <p className="text-xs text-[var(--text-muted)] mb-5 leading-relaxed">
+                                Esta vista cruza biomarcadores físicos (fadiga muscular + sono) com os índices cognitivos preditivos da plataforma.
+                            </p>
+                            <ul className="text-xs space-y-3 text-[#A3A3A3]">
+                                <li className="flex items-start"><span className="inline-block mt-0.5 min-w-[12px] h-3 rounded-sm bg-[var(--accent-primary)]/40 border border-[var(--accent-primary)] mr-3"></span> <div><strong className="text-white">Peak Performance:</strong> Zona ideal para titularidade em finais e clássicos.</div></li>
+                                <li className="flex items-start"><span className="inline-block mt-0.5 min-w-[12px] h-3 rounded-sm bg-[#EF4444]/40 border border-[#EF4444] mr-3"></span> <div><strong className="text-white">Fadiga Extrema:</strong> Risco agudo de lesão e erro tático. Recomenda-se corte ou Recovery intensivo.</div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </AdminLayout >
     );
