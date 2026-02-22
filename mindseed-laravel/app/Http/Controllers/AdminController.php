@@ -33,8 +33,11 @@ class AdminController extends Controller
 
     public function perfil()
     {
-        // For testing, grab the first real athlete showing critical
+        // For testing, grab the first real athlete showing critical or any other athlete
         $athlete = Athlete::with(['user', 'metrics', 'alerts'])->where('status', 'critical')->first();
+        if (!$athlete) {
+            $athlete = Athlete::with(['user', 'metrics', 'alerts'])->first();
+        }
 
         return Inertia::render('Admin/perfil/Index', [
             'athlete' => $athlete

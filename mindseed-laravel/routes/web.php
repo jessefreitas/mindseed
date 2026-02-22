@@ -19,6 +19,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/comparativo', [AdminController::class, 'comparativo'])->name('admin.comparativo');
     Route::get('/admin/alertas', [AdminController::class, 'alertas'])->name('admin.alertas');
     
+    // Admin Analytics Data Discovery
+    Route::get('/admin/analytics', [\App\Http\Controllers\AnalyticsController::class, 'index'])->name('admin.analytics');
+    
     Route::get('/atleta', [AtletaController::class, 'dashboard'])->name('atleta.dashboard');
     Route::get('/atleta/assessment', [AssessmentController::class, 'create'])->name('atleta.assessment');
     Route::post('/atleta/assessment', [AssessmentController::class, 'store'])->name('atleta.assessment.store');
@@ -43,9 +46,6 @@ Route::prefix('api')->group(function () {
     Route::post('/ai/coach/protocol', [\App\Http\Controllers\Api\AiCoachController::class, 'generateProtocol']);
     Route::post('/wearables/webhook', [\App\Http\Controllers\Api\WearableIngestionController::class, 'receiveWebhook']);
     
-    // Admin Analytics Data Discovery
-    Route::get('/analytics', [\App\Http\Controllers\AnalyticsController::class, 'index'])->name('admin.analytics');
-
     // PDF Export Endpoint (DOMPDF)
     Route::get('/reports/export/{athlete_id}', [\App\Http\Controllers\ReportController::class, 'export'])->name('api.reports.export');
 });
