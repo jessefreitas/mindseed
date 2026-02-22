@@ -70,7 +70,7 @@ class AssessmentController extends Controller
         $grief_indicator = ($validated['q_mood'] <= 2 && $validated['q_energy'] <= 2 && $validated['q_focus'] <= 2);
 
         // Save Daily Metric
-        DailyMetric::create([
+        $dailyMetric = DailyMetric::create([
             'athlete_id' => $athlete->id,
             'date' => now()->toDateString(),
             'energy_level' => $energy_level,
@@ -84,46 +84,8 @@ class AssessmentController extends Controller
             'grief_indicator' => $grief_indicator,
         ]);
 
-        // Trigger Alerts if thresholds met
-        if ($burnout_risk) {
-            Alert::create([
-                'athlete_id' => $athlete->id,
-                'type' => 'Risco de Burnout Crítico',
-                'severity' => 'critical',
-                'description' => 'Motor PsychoAnalytics detectou exaustão sistêmica e alto estresse.',
-                'is_resolved' => false,
-            ]);
-            $athlete->update(['status' => 'critical']);
-        } elseif ($grief_indicator) {
-            Alert::create([
-                'athlete_id' => $athlete->id,
-                'type' => 'Indicador de Trauma / Luto',
-                'severity' => 'critical',
-                'description' => 'Apatia severa, humor baixo e perda de foco aguda detectados.',
-                'is_resolved' => false,
-            ]);
-            $athlete->update(['status' => 'critical']);
-        } elseif ($validated['q_stress'] >= 4) {
-            Alert::create([
-                'athlete_id' => $athlete->id,
-                'type' => 'Pico de Estresse Detectado',
-                'severity' => $validated['q_stress'] == 5 ? 'critical' : 'medium',
-                'description' => 'O atleta manifestou alto nível de estresse no assessment diário.',
-                'is_resolved' => false,
-            ]);
-            
-            $athlete->update(['status' => 'critical']);
-        }
-
-        if ($validated['q_sleep'] <= 2) {
-            Alert::create([
-                'athlete_id' => $athlete->id,
-                'type' => 'Privação de Sono',
-                'severity' => 'medium',
-                'description' => 'Atleta registrou qualidade de sono ruim na noite anterior.',
-                'is_resolved' => false,
-            ]);
-        }
+        // Process Compound Rules and Generate Alerts via the Advanced Engine
+        \App\Services\RuleEngineService::processMetrics($athlete, $dailyMetric);
 
         return redirect()->route('atleta.dashboard')->with('success', 'Assessment enviado com sucesso! MindScore atualizado.');
     }
